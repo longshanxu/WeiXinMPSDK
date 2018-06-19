@@ -56,7 +56,7 @@ namespace Senparc.Weixin.MP.CoreSample
             //添加Memcached配置（按需）
             services.AddSenparcMemcached(options =>
                     {
-                        options.AddServer("memcached", 11211);
+                        options.AddServer("127.0.0.1", 11211);
                         //options.AddPlainTextAuthenticator("", "usename", "password");
                     });
 

@@ -65,6 +65,7 @@ namespace Senparc.Weixin.MP.CoreSample.Controllers
         [ActionName("Index")]
         public ActionResult Post(PostModel postModel)
         {
+            WeixinTrace.Log("what==================");
             if (!CheckSignature.Check(postModel.Signature, postModel.Timestamp, postModel.Nonce, Token))
             {
                 return Content("参数错误！");
