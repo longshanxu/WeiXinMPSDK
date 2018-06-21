@@ -1,0 +1,30 @@
+{
+  "name": "datacenter",
+  "version": "1.0.0",
+  "description": "DataCenter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.service.sirving.cn/json.xu/DataCenter.git"
+  },
+  "keywords": [
+    "parse"
+  ],
+  "author": "jsonxu",
+  "license": "MIT",
+  "devDependencies": {
+    "log4js": "^2.5.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "express": "^4.16.2",
+    "kue": "^0.11.6",
+    "moment": "^2.20.1",
+    "parse-dashboard": "^1.1.2",
+    "parse-server": "^2.7.2"
+  }
+}
