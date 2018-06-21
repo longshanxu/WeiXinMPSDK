@@ -12,8 +12,8 @@ let serverUrl = 'http://localhost:4666/parse';
 // judge databaseURI && serverURL
 
 const deaoparseconfig = {
-  appName: 'DeAo(得奥)',
-  databaseURI: 'mongodb://sirvinguser:sirvinguser@deao.chinacloudapp.cn:27017/createreactappparse', // Connection string for your MongoDB database
+  appName: '匠造民星数据中心',
+  databaseURI: 'mongodb://localhost:27017/datacenter', // Connection string for your MongoDB database
   cloud: __dirname + '/deao/cloud/main.js', // Absolute path to your Cloud Code
   verbose: false,
   logLevel:"ERROR",
@@ -34,27 +34,6 @@ const deaoparseconfig = {
 }
 
 
-const nycloudparseconfig = {
-  appName: 'NYCloud(农业)',
-  databaseURI: 'mongodb://127.0.0.1:27017/nycloud', // Connection string for your MongoDB database
-  cloud: __dirname + '/nycloud/cloud/main.js', // Absolute path to your Cloud Code
-  verbose: false,
-  logLevel:"ERROR",
-  logsFolder: 'D:/logs',
-  appId: 'myAppId',
-  restAPIKey: 'myrestkey',
-  javascriptKey:'myjskey',
-  masterKey: 'myMasterKey', // Keep this key secret!
-  fileKey: 'optionalFileKey',
-  serverURL: serverUrl, // Don't forget to change to https if needed
-  maxUploadSize: '100mb',
-  // liveQuery: {
-  //   classNames: ['StudentSigns','TeacherRatingStudent'],
-  //   redisURL: 'redis://h:DFzFC3Gk47mnjykT5EpQcRKawb+04kelOwCkm8kKIoY=@svdeao.redis.cache.chinacloudapi.cn:6379/5'
-  // },
-  websocketTimeout: 10 * 1000,
-  cacheTimeout: 60 * 600 * 1000
-}
 
 //require('./src/server/parse_to_kue');
 
@@ -65,10 +44,9 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '2048mb' }))
 // app.use(bodyParser.json({ type: 'application/json' }));
 
 const api = new ParseServer(deaoparseconfig);
-const api1 = new ParseServer(nycloudparseconfig);
 
 app.use('/parse', api);
-app.use('/parse1', api1);
+
 
 const dashboard = new ParseDashboard({
   apps: [
@@ -78,13 +56,6 @@ const dashboard = new ParseDashboard({
       masterKey: deaoparseconfig.masterKey,
       appName: deaoparseconfig.appName,
       restKey:  deaoparseconfig.restAPIKey,
-    },
-    {
-      serverURL: nycloudparseconfig.serverURL,
-      appId: nycloudparseconfig.appId,
-      masterKey: nycloudparseconfig.masterKey,
-      appName: nycloudparseconfig.appName,
-      restKey:  nycloudparseconfig.restAPIKey,
     }
   ],
   "users": [
