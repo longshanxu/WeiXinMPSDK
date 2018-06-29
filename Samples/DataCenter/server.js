@@ -21,6 +21,7 @@ const deaoparseconfig = {
   appId: 'myAppId',
   restAPIKey: 'myrestkey',
   javascriptKey:'myjskey',
+  dotNetKey:'mydotNetKey',
   masterKey: 'myMasterKey', // Keep this key secret!
   fileKey: 'optionalFileKey',
   serverURL: serverUrl, // Don't forget to change to https if needed
