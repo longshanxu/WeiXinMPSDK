@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/splash/splash",
+    "pages/discovery/discovery",
+    "pages/index/index",
+    "pages/movies/movies",
+    "pages/movies/movieDetails",
+    "pages/classification/index",
+    "pages/card/card",
+    "pages/setting/setting",
+    "pages/intheaters/in_theaters",
+    "pages/search/search",
+    "pages/sources/sources",
+    "pages/favMovieList/index",
+    "pages/favCards/index",
+    "pages/article/detail/detail",
+    "pages/webview/index",
+    "pages/about/index",
+    "pages/evaluate/evaluate",
+    "pages/article/list/list",
+    "pages/userinfo/userinfo",
+    "pages/bindphone/index",
+    "pages/trailers/trailers",
+    "pages/first/first"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#496069",
+    "navigationBarTitleText": "群极民星",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f7f7f7"
+  },
+  "tabBar": {
+    "color": "#496069",
+    "selectedColor": "#000",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/discovery/discovery",
+        "text": "发现民星",
+        "iconPath": "assets/images/tab_discover_unchecked.png",
+        "selectedIconPath": "assets/images/tab_discover_checked.png"
+      },
+      {
+        "pagePath": "pages/webview/index",
+        "text": "购买",
+        "iconPath": "assets/images/tab_movies_unchecked.png",
+        "selectedIconPath": "assets/images/tab_movies_checked.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "私人领地",
+        "iconPath": "assets/images/tab_usercenter_unchecked.png",
+        "selectedIconPath": "assets/images/tab_usercenter_checked.png"
+      }
+    ]
+  }
+}

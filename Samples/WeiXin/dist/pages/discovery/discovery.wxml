@@ -1,0 +1,44 @@
+<!--发现-->
+<import src="../common/circle/circle.wxml" />
+
+<view class='container page-discovery'>
+  <navigator url='/pages/search/search' hover-class='none'>
+    <view class='search-bar'>
+      <view class='search-radius btn-opacity'>
+        <icon type='search' size='14'></icon>
+        <text>搜索民星</text>
+      </view>
+    </view>
+  </navigator>
+
+  <view class='content'>
+    <scroll-view scroll-y enable-back-to-top>
+      <swiper class='banner' indicator-dots autoplay indicator-active-color="#fff" circular>
+        <block wx:for="{{banner}}" wx:key="id">
+          <swiper-item>
+            <image data-index='{{index}}' src="{{item.image}}" class="slide-image" bindtap='onBannerTap' />
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <view class="kind-container">
+        <navigator class='item-container' hover-class='hover-bg' url='/pages/classification/index'>
+          <template is="circle" data="{{imgUrl:'/assets/images/discover_classify_group_icon.png',title:'民星分类'}}" />
+        </navigator>
+        <navigator class='item-container' hover-class='hover-bg' url='/pages/card/card'>
+          <template is="circle" data="{{date:nowDay,title:'每日民星推荐'}}" />
+        </navigator>
+        <navigator class='item-container' hover-class='hover-bg' url='/pages/intheaters/in_theaters'>
+          <template is="circle" data="{{imgUrl:'/assets/images/discover_classify_cinema_icon.png',title:'热门民星'}}" />
+        </navigator>
+      </view>
+
+      <block wx:for="{{articles}}" wx:key='id'>
+        <navigator class='article-item-container' url='/pages/article/detail/detail?id={{item.id}}'>
+          <template is="commingItem" data="{{...item}}" />
+        </navigator>
+      </block>
+
+    </scroll-view>
+  </view>
+</view>

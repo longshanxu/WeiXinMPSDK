@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Parse;
 
 namespace Senparc.Weixin.MP.CoreSample
 {
@@ -14,7 +15,15 @@ namespace Senparc.Weixin.MP.CoreSample
     {
         public static void Main(string[] args)
         {
-           CreateWebHostBuilder(args).Build().Run();
+            ParseClient.Initialize(new ParseClient.Configuration
+            {
+                ApplicationId = "myAppId",
+                WindowsKey = "mydotNetKey",
+
+                // the serverURL of your hosted Parse Server
+                Server = "http://www.jizuilv.cn:4666/parse/"
+            });
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "民星详情",
+  "disableScroll": true,
+  "usingComponents": {
+    "comp-btnFav": "/components/btn-fav/FavButton"
+  }
+}

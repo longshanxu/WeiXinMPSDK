@@ -1,0 +1,27 @@
+<!--pages/about/index.wxml-->
+<view class='container self-honye'>
+  <view class='banner'>
+    <pre-image 
+      src='{{datas.image}}' 
+      mode='widthFix'
+      height='100%'
+      place-img='/assets/images/bg-default.jpg'
+    />
+  </view>
+
+  <view class='blogger'>
+    <block wx:for='{{datas.labels}}' wx:key='index'>
+      <view class='row-cell'>
+        <text>{{item.label}}：</text>
+        <text>{{item.value}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class='advert'>
+    <text>{{datas.content}}</text>
+  </view>
+</view>
+
+<i wx:if='{{playing}}' class="active fa fa-music" bindtap='audioToggle'></i>
+<i wx:else class="fa fa-music" bindtap='audioToggle'></i>

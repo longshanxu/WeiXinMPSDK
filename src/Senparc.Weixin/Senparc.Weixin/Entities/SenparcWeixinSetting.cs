@@ -149,5 +149,11 @@ namespace Senparc.Weixin.Entities
         public string Cache_Redis_Configuration { get; set; }
 
         #endregion
+
+        #region Parse Server配置
+        public string ApplicationId { get; set; }
+        public string WindowsKey { get; set; }
+        public string Server { get; set; } 
+        #endregion
     }
 }

@@ -6,12 +6,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\AppStore\**" />
+    <Compile Remove="Controllers\QY\**" />
+    <Content Remove="Controllers\AppStore\**" />
+    <Content Remove="Controllers\QY\**" />
+    <EmbeddedResource Remove="Controllers\AppStore\**" />
+    <EmbeddedResource Remove="Controllers\QY\**" />
+    <None Remove="Controllers\AppStore\**" />
+    <None Remove="Controllers\QY\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove=".dockerignore" />
     <None Remove="Dockerfile" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
     <PackageReference Include="System.Drawing.Common" Version="4.5.0" />
     <PackageReference Include="ZXing.Net" Version="0.16.4" />
   </ItemGroup>
@@ -77,10 +89,5 @@
     <ProjectReference Include="..\..\..\src\Senparc.Weixin\Senparc.Weixin\Senparc.Weixin.vs2017.csproj" />
     <ProjectReference Include="..\..\Parse\Parse.csproj" />
     <ProjectReference Include="..\..\Senparc.Weixin.MP.Sample\Senparc.Weixin.MP.Sample.CommonService\Senparc.Weixin.MP.CoreSample.CommonService.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\AppStore\" />
-    <Folder Include="Controllers\QY\" />
   </ItemGroup>
 </Project>
