@@ -79,7 +79,8 @@ namespace Senparc.Weixin.MP.CoreSample
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseFileServer();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

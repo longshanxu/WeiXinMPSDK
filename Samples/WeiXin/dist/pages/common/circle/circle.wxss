@@ -10,7 +10,7 @@
 .circle-border {
   width: 120rpx;
   height: 120rpx;
-  border: 2rpx solid #496069;
+  border: 2rpx solid #3383BD;
   border-radius: 50%;
   margin: 20rpx;
   display: flex;
@@ -29,7 +29,7 @@
 .circle-date {
   font-weight: bold;
   font-size: 1.6rem;
-  color: #496069;
+  color: #3383BD;
 }
 /* circle end */
 

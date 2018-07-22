@@ -16,7 +16,7 @@ Page({
       wx.switchTab({
         url: '/pages/discovery/discovery',
       })
-    },1500)
+    },1800)
   },
 
 })

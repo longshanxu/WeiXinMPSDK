@@ -1863,14 +1863,14 @@ a.link:hover {
   }
 }
 
-.page-header h2 {
+.page-header h1 {
   font-weight: 400;
   text-transform: capitalize;
   font-size: 30px;
   margin: 0;
 }
 
-.page-header h2 small {
+.page-header h1 small {
   display: block;
   font-size: 16px;
   color: #848484;
@@ -2168,7 +2168,7 @@ a.link:hover {
 }
 
 .navbar-brand > img {
-  width: 100%;
+  width: 50px;
 }
 
 @media (min-width: 768px) {
@@ -2177,6 +2177,10 @@ a.link:hover {
     width: 151px;
     padding: 25px 0;
     top: 0;
+  }
+
+  .navbar-brand > img {
+    width: 76px;
   }
 }
 
@@ -2385,8 +2389,8 @@ a.link:hover {
 
 .navbar-nav li.dropdown.megaDropMenu .dropdown-menu .list-unstyled li h5 {
   color: #a0a0a0;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 10px;
+  margin-top:60px;
 }
 
 .navbar-nav li.dropdown.megaDropMenu .dropdown-menu .list-unstyled li a {
@@ -3086,14 +3090,13 @@ a.link:hover {
 }
 
 .navbar-brand {
-  width: 150px;
-  padding: 15px 10px;
+  padding: 10px 10px;
 }
 
 @media (min-width: 768px) {
   .navbar-brand {
     width: auto;
-    padding: 25px 10px;
+    padding: 10px 10px;
   }
 }
 
@@ -4315,7 +4318,7 @@ i.fa.fa-heart-o.active:before {
   }
 }
 
-.countUpSection .page-header h2 {
+.countUpSection .page-header h1 {
   color: #ffffff;
 }
 
@@ -5029,7 +5032,7 @@ figure:hover .overlay {
   }
 }
 
-.appDownload .page-header h2 {
+.appDownload .page-header h1 {
   color: #ffffff;
 }
 
@@ -6355,7 +6358,7 @@ figure:hover .overlay {
 }
 
 .advancedSupport .priceShorting {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .advancedSupport.active {

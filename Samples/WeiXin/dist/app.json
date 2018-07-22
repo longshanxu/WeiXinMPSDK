@@ -25,14 +25,14 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#496069",
+    "navigationBarBackgroundColor": "#3383BD",
     "navigationBarTitleText": "群极民星",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f7f7f7"
   },
   "tabBar": {
-    "color": "#496069",
-    "selectedColor": "#000",
+    "color": "#666",
+    "selectedColor": "#3383BD",
     "backgroundColor": "#fff",
     "borderStyle": "black",
     "list": [

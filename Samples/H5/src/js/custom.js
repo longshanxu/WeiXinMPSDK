@@ -213,7 +213,9 @@ jQuery(document).ready(function(){
     loop: true,
     autoplay: true,
     autoplayTimeout: 6000,
+    autoplayHoverPause:true,
     smartSpeed:1000,
+    stopOnHover:true,
     responsive:{
       320:{
         slideBy: 1,
