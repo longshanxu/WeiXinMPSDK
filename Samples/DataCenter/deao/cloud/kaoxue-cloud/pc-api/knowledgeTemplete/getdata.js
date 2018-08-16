@@ -101,6 +101,8 @@ function Getyinglidata(element) {
     var bet = new Parse.Query(Bet);
 
     bet.equalTo("match_id", element);
+
+   
     bet.find({
       success: function (datas) {
         //console.log(count++); Do something with the returned Parse.Object values
@@ -134,30 +136,8 @@ function Getyinglidata(element) {
 
 };
 
-function saveresults(resultssss) {
-  if (resultssss) {
-    //处理到出结果到
-    for (let index = 0; index < resultssss.length; index++) {
-      const element = resultssss[index];
-      var Result = Parse
-        .Object
-        .extend("Result");
-      var r = new Result();
 
-      r.set("match_id", element.match_id);
-      r.set("interwetten", element.interwetten);
-      r.set("weilian", element.weilian);
-      r.set("yishengbo", element.yishengbo);
-      r.set("yingli", element.yingli);
-      r.set("match_time", element.match_time);
-      r.set("serial_no", element.serial_no);
-      r.save();
-
-    }
-  }
-}
-
-function getdata1(array, resultssss) {
+function getdata1(array, resultssss,datetemp) {
   if (array.length > 0) {
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
@@ -172,7 +152,22 @@ function getdata1(array, resultssss) {
                 for (let j = 0; j < resultssss.length; j++) {
                   const jitem = resultssss[j];
                   if (jitem.id == tt[1]) {
-                    jitem["yingli"] = tt[0];
+                    //jitem["yingli"] = tt[0];
+                   
+                    var Result = Parse
+                      .Object
+                      .extend("Result");
+                    var r = new Result();
+              
+                    r.set("match_id", jitem.id);
+                    r.set("interwetten", jitem.interwetten);
+                    r.set("weilian", jitem.weilian);
+                    r.set("yishengbo", jitem.yishengbo);
+                    r.set("yingli", tt[0]);
+                    r.set("match_time", jitem.match_time);
+                    r.set("today",datetemp);
+                    r.set("serial_no", jitem.serial_no);
+                    r.save();  
                   }
 
                 }
@@ -181,7 +176,7 @@ function getdata1(array, resultssss) {
             });
           }
 
-          saveresults(resultssss);
+          //console.log(resultssss);
         }
       });
     }
@@ -222,8 +217,9 @@ Parse
           }
         }
 
-        getdata1(array, resultssss);
+        getdata1(array, resultssss,datetemp);
 
+        response.success("OK");
       },
       error: function (error) {
         console.log("Error: " + error.code + " " + error.message);
@@ -233,3 +229,11 @@ Parse
   });
 
 
+
+  /*************
+   * 
+   * GetRowData
+   * 获取专用数据
+   * 
+   * ***************/
+  

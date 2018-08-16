@@ -34,7 +34,7 @@ Parse
           .Object
           .extend("GameScore");
         var gameScore = new GameScore();
-        console.log(httpResponse.data);
+        //console.log(httpResponse.data);
         gameScore.set("date", datetemp);
         gameScore.save(httpResponse.data);
 
@@ -47,8 +47,8 @@ Parse
 
   })
 
-function GetData(match_id, serial_no, match_time) {
-  console.log(match_id);
+function GetData(match_id, serial_no, match_time,datetemp) {
+  //console.log(match_id);
   var url = "https://apic.itou.com/api/mdata/proxya?platform=koudai_wx&_prt=https&ver=2018010" +
       "1000000&interface=mc.data.odds.getOdds&dc=1539239293&SportId=1&MatchID=" + match_id + "&betting_type_id=1&itoukey=155352b9a7cd26dadd714f41cab3e52f&app_key=C14F562F-C6E" +
       "0-45E3-A2C4-E807BA99B018&device_id=&app_id=C14F562F-C6E0-45E3-A2C4-E807BA99B018+" +
@@ -71,6 +71,7 @@ function GetData(match_id, serial_no, match_time) {
       score.set("match_id", match_id);
       score.set("match_time", match_time);
       score.set("serial_no", serial_no);
+      score.set("today", datetemp);
       score.save(httpResponse.data);
 
     }, function (httpResponse) {
@@ -114,7 +115,7 @@ Parse
             var serial_no = x[key]["serial_no"];
             var match_time = x[key]["match_time"];
 
-            GetData(match_id, serial_no, match_time);
+            GetData(match_id, serial_no, match_time,datetemp);
 
           }
 
@@ -128,8 +129,8 @@ Parse
 
   });
 
-function Getbetdata(match_id) {
-  console.log(match_id);
+function Getbetdata(match_id,today) {
+  //console.log(match_id);
   var url = "https://apic.itou.com/api/mdata/proxya?platform=koudai_wx&_prt=https&ver=2018010" +
       "1000000&interface=mc.data.exchanges.getexchanges&_dc=1539239293&sportId=1&MatchI" +
       "D=" + match_id + "&itoukey=155352b9a7cd26dadd714f41cab3e52f&app_key=C14F562F-C6E0-45E3-A2C4-E807BA" +
@@ -152,6 +153,7 @@ function Getbetdata(match_id) {
       var bet = new Bet();
 
       bet.set("match_id", match_id);
+      bet.set("today", today);
       bet.save(httpResponse.data);
 
     }, function (httpResponse) {
@@ -191,7 +193,7 @@ Parse
           var x = item[datetemp];
           for (var key in x) {
             var match_id = x[key]["match_id"];
-            Getbetdata(match_id);
+            Getbetdata(match_id,datetemp);
 
           }
 
@@ -204,3 +206,14 @@ Parse
     });
   });
 
+
+  /*************
+   * 
+   * 首次
+   * getgamebytoday
+   * 每次需要获取
+   * getpeilvdata
+   * getbet
+   * 
+   * 
+   * *********** */
