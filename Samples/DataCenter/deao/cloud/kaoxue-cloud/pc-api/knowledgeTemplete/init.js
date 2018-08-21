@@ -3,6 +3,9 @@
  * @author liangwei.xia
  * @since 2018-1-11
  */
+
+//bet 数据
+//https://mobile.288365.com/#type=Splash;key=1;ip=0;lng=2
 //获取今天的比赛
 Parse
   .Cloud

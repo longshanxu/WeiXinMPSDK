@@ -118,8 +118,17 @@ function Getyinglidata(element) {
           var h = item.jcTrade.WinLost.home;
           var d = item.jcTrade.WinLost.draw;
           var a = item.jcTrade.WinLost.away;
+ 
+          //竞彩人气
+          var h1 = item.popu.Per.home;
+          var d1 = item.popu.Per.draw;
+          var a1 = item.popu.Per.away;
+          //竞彩交易
+          var h2 = item.jcTrade.Per.home;
+          var d2 = item.jcTrade.Per.draw;
+          var a2 = item.jcTrade.Per.away;
 
-          rrr = h + ";" + d + ";" + a+"&"+id;
+          rrr = h + ";" + d + ";" + a+ ";" +h1 + ";" + d1 + ";" + a1+ ";"+h2 + ";" + d2 + ";" + a2+"&"+id;
 
           resolve(rrr);
         }

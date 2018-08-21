@@ -15,6 +15,7 @@ namespace Senparc.Weixin.MP.CoreSample
     {
         public static void Main(string[] args)
         {
+
             ParseClient.Initialize(new ParseClient.Configuration
             {
                 ApplicationId = "myAppId",
