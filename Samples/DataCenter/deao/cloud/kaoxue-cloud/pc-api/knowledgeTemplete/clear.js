@@ -1,6 +1,8 @@
+var colors = require('colors');
+
 Parse
   .Cloud
-  .define("ClearAll", (request, response) => {
+  .define("ClearAll2", (request, response) => {
 
     var date = new Date();
     var year = date.getFullYear();
@@ -10,33 +12,40 @@ Parse
     if (month < 10) {
       datetemp = year + "-0" + month + "-" + day;
     }
-    clear(datetemp,"Result");
-    clear(datetemp,"Bet");
-    clear(datetemp,"Socre");
 
+    datetemp = "2018-09-04";;
+
+    clear2(datetemp, "Result2");
+    clear2(datetemp, "Bet2");
+    clear2(datetemp, "Socre2");
     response.success("OK");
 
   });
 
-function clear(e,type) {
-    var Result = Parse
-      .Object
-      .extend(type);
-    var reset = new Parse.Query(Result);
-    reset.equalTo("today", e);
-    reset.find({
-        success: function (ss) {
+function clear2(e, type) {
+  var Result = Parse
+    .Object
+    .extend(type);
+  var reset = new Parse.Query(Result);
+  reset.equalTo("today", e);
+  reset.find({
+    success: function (ss) {
 
-            for (var i = 0; i < ss.length; i++) {
-                // This does not require a network access.
-                var s = ss[i];
-                s.destroy();
-                s.save();
-            }
+      for (var i = 0; i < ss.length; i++) {
+        // This does not require a network access.
+        var s = ss[i];
+        s.destroy();
+        s.save();
+      }
 
-        }
-    });
-  }
+    }
+  });
+}
 
-
-  ///清理数据
+///清理数据
+/********
+   *
+   * ClearAll2
+   *
+   *
+   */
