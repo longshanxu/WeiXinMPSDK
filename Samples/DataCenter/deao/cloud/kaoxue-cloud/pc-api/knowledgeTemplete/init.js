@@ -4,7 +4,7 @@
  * @since 2018-1-11
  */
 
-//bet 数据 https://mobile.288365.com/#type=Splash;key=1;ip=0;lng=2 获取明天的比赛
+//bet 数据 https://mobile.288365.com/#type=Splash;key=1;ip=0;lng=2 获取今天的比赛
 Parse
   .Cloud
   .define("getgamebytoday", (request, response) => {
@@ -176,7 +176,7 @@ Parse
           var items = object.get("items");
           for (let j = 0; j < items.length; j++) {
             const element = items[j];
-            if (element.dateDesc == "明天") {
+            if (element.dateDesc == "今天") {
               var macthes = element.matches;
               for (let x = 0; x < macthes.length; x++) {
                 const element = macthes[x];
@@ -269,7 +269,7 @@ Parse
           var items = object.get("items");
           for (let j = 0; j < items.length; j++) {
             const element = items[j];
-            if (element.dateDesc == "明天") {
+            if (element.dateDesc == "今天") {
               var macthes = element.matches;
               for (let x = 0; x < macthes.length; x++) {
                 const element = macthes[x];
@@ -361,7 +361,7 @@ Parse
             var items = object.get("items");
             for (let j = 0; j < items.length; j++) {
               const item = items[j];
-              if (item.dateDesc == "明天") {
+              if (item.dateDesc == "今天") {
                 var macthes = item.matches;
 
                 for (let x = 0; x < macthes.length; x++) {
@@ -672,7 +672,7 @@ Parse
           var items = object.get("items");
           for (let j = 0; j < items.length; j++) {
             const element = items[j];
-            if (element.dateDesc == "明天") {
+            if (element.dateDesc == "今天") {
               var macthes = element.matches;
               for (let x = 0; x < macthes.length; x++) {
                 const element = macthes[x];

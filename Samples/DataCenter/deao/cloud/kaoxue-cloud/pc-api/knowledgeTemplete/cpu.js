@@ -33,7 +33,7 @@ Parse
                     match_time
                     var yourtime = match_time;
                     yourtime = yourtime.replace("-", "/"); //替换字符，变成标准格式
-                    var d2 = new Date(); //取明天的日期
+                    var d2 = new Date(); //取今天的日期
                     var d1 = new Date(Date.parse(yourtime));
                     // if (d1 < d2) {
                     //     continue;
