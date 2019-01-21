@@ -100,5 +100,18 @@ namespace Senparc.Weixin.MP.CoreSample.Controllers
 
             return Json(articles);
         }
+
+
+
+        [HttpGet]
+        [ActionName("Cpu")]
+        public async Task<ActionResult> CpuResult(string id)
+        {
+            IDictionary<string, object> dictionary = new Dictionary<string, object>();
+            dictionary.Add("id", "201809097001");
+            var a= await ParseCloud.CallFunctionAsync<object>("cpu2", dictionary);
+            return Json(a);
+
+        }
     }
 }

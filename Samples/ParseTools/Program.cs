@@ -9,6 +9,18 @@ namespace ParseTools
         static void Main(string[] args)
         {
 
+
+            var dic = new Dictionary<string, int>();
+            var aa = "127.0.0.1:11211";
+            var tt = aa.Split(';');
+            foreach (var server in tt)
+            {
+
+                var serverData = server.Split(':');
+                dic[serverData[0]] = int.Parse(serverData[1]);
+
+            }
+
             ParseClient.Initialize(new ParseClient.Configuration
             {
                 ApplicationId = "myAppId",

@@ -13,11 +13,12 @@ Parse
       datetemp = year + "-0" + month + "-" + day;
     }
 
-    datetemp = "2018-09-04";;
+    datetemp = "2019-01-21";;
 
     clear2(datetemp, "Result2");
     clear2(datetemp, "Bet2");
     clear2(datetemp, "Socre2");
+    clear2(datetemp, "Pankou");
     response.success("OK");
 
   });
@@ -27,7 +28,7 @@ function clear2(e, type) {
     .Object
     .extend(type);
   var reset = new Parse.Query(Result);
-  reset.equalTo("today", e);
+  //reset.equalTo("today", e);
   reset.find({
     success: function (ss) {
 

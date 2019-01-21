@@ -17,7 +17,7 @@ Parse
       datetemp = year + "-0" + month + "-" + day;
     }
 
-    datetemp = "2018-09-04";;
+    datetemp = "2019-01-21";;
 
     Parse
       .Cloud
@@ -47,58 +47,6 @@ Parse
 
   })
 
-function GetData(match_id, serial_no, match_time, datetemp) {
-  //console.log(match_id);
-  var url = "https://apic.itou.com/api/mdata/proxya?platform=koudai_wx&_prt=https&ver=2018010" +
-      "1000000&interface=mc.data.odds.getOdds&dc=1539239293&SportId=1&MatchID=" + match_id + "&betting_type_id=1&itoukey=155352b9a7cd26dadd714f41cab3e52f&app_key=C14F562F-C6E" +
-      "0-45E3-A2C4-E807BA99B018&device_id=&app_id=C14F562F-C6E0-45E3-A2C4-E807BA99B018+" +
-      "+&channel=app.cps.31120.20.a.okooo.com&VersionNum=1.0.0.1&CodeVer=20161010-001";
-
-  // var
-  // url="https://apic.itou.com/api/mdata/proxya?platform=koudai_mobile&_prt=https
-  // &
-  // ver=20180101000000&interface=mc.data.stat.getstat&_dc=1534925595376&SportId=1
-  // &
-  // MatchID=1042100&LId=43&bettingTypeId=1&boundary=1.00&device_id=&app_id=C14F56
-  // 2
-  // F-C6E0-45E3-A2C4-E807BA99B018&channel=app.cps.31120.20.a.okooo.com&VersionNum
-  // = 1.0.0.1&CodeVer=20161010-001&t=716961&_=1534925595379"; var
-  // url="https://apic.itou.com/api/mdata/proxya?platform=koudai_mobile&_prt=https
-  // &
-  // ver=20180101000000&interface=mc.data.stat.getstat&_dc=1534926133955&SportId=1
-  // &
-  // MatchID=1042100&LId=14&bettingTypeId=1&boundary=1.00&device_id=&app_id=C14F56
-  // 2
-  // F-C6E0-45E3-A2C4-E807BA99B018&channel=app.cps.31120.20.a.okooo.com&VersionNum
-  // = 1.0.0.1&CodeVer=20161010-001&t=696852&_=1534926133959";
-  Parse
-    .Cloud
-    .httpRequest({
-      url: url,
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      }
-    })
-    .then(function (httpResponse) {
-      // success console.log(httpResponse.data);
-      var Score = Parse
-        .Object
-        .extend("Socre");
-      var score = new Score();
-
-      score.set("match_id", match_id);
-      score.set("match_time", match_time);
-      score.set("serial_no", serial_no);
-      score.set("today", datetemp);
-      score.save(httpResponse.data);
-
-    }, function (httpResponse) {
-      // error
-      response.error('Request failed with response code ' + httpResponse.status);
-    });
-
-}
-
 //
 Parse
   .Cloud
@@ -112,12 +60,12 @@ Parse
       datetemp = year + "-0" + month + "-" + day;
     }
 
-    datetemp = "2018-09-04";;
-
+    datetemp = "2019-01-21";;
+    //https://vipc.cn/i/live/jczq/date/2019-01-21/next
     Parse
       .Cloud
       .httpRequest({
-        url: 'https://vipc.cn/i/live/football/date/today/next',
+        url: 'https://vipc.cn/i/live/jczq/date/' + datetemp + '/next',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
           'Accept-Encoding': 'gzip,deflate, br'
@@ -156,7 +104,7 @@ Parse
     }
 
     //定义某天的时间;;
-    datetemp = "2018-09-04";
+    datetemp = "2019-01-21";
 
     var GameScore = Parse
       .Object
@@ -255,7 +203,7 @@ Parse
       datetemp = year + "-0" + month + "-" + day;
     }
 
-    datetemp = "2018-09-04";;
+    datetemp = "2019-01-21";;
 
     query.equalTo("date", datetemp);
     query.limit(500);
@@ -345,7 +293,7 @@ Parse
     if (month < 10) {
       datetemp = year + "-0" + month + "-" + day;
     }
-    datetemp = "2018-09-04";;
+    datetemp = "2019-01-21";;
     query.equalTo("date", datetemp);
     query.limit(500);
     var array = [];
@@ -495,8 +443,12 @@ function Getjingcaidata2(element) {
 
               var p1 = e.firstReturnRatio;
               var p2 = e.returnRatio;
+              //最新 - 胜/平/负
+              var h1 = e.odds[0];
+              var d1 = e.odds[1];
+              var a1 = e.odds[2];
 
-              var rrr = kh + "-" + kd + "-" + ka + "-" + kh1 + "-" + kd1 + "-" + ka1 + "-" + p1 + "-" + p2;
+              var rrr = kh + "-" + kd + "-" + ka + "-" + kh1 + "-" + kd1 + "-" + ka1 + "-" + p1 + "-" + p2 + "-" + h1 + "-" + d1 + "-" + a1;
               temparray['guanfang'] = rrr;
             }
             //bet365 27
@@ -515,10 +467,19 @@ function Getjingcaidata2(element) {
               var p1 = e.firstReturnRatio;
               var p2 = e.returnRatio;
 
-              var rrr = kh + "-" + kd + "-" + ka + "-" + kh1 + "-" + kd1 + "-" + ka1 + "-" + p1 + "-" + p2;
+              //初始 - 胜/平/负 初始 - 胜/平/负
+              var h = e.firstOdds[0];
+              var d = e.firstOdds[1];
+              var a = e.firstOdds[2];
+              //最新 - 胜/平/负
+              var h1 = e.odds[0];
+              var d1 = e.odds[1];
+              var a1 = e.odds[2];
+
+              var rrr = kh + "-" + kd + "-" + ka + "-" + kh1 + "-" + kd1 + "-" + ka1 + "-" + p1 + "-" + p2 + "-" + h1 + "-" + d1 + "-" + a1;
               temparray['bet365'] = rrr;
             }
-            if (e.companyId == "104" && e.companyName == "Interwetten") {
+            if (e.companyId == "82" && e.companyName == "立博") {
               //初始 - 胜/平/负 初始 - 胜/平/负
               var h = e.firstOdds[0];
               var d = e.firstOdds[1];
@@ -616,32 +577,11 @@ function Getyinglidata2(element) {
 
 };
 
-function GetjingcaiID(element) {
-
-  var array = [
-    "201809042001",
-    "201809042002",
-    "201809042003",
-    "201809042004",
-    "201809042005",
-    "201809042006",
-    "201809042007",
-    "201809042008"
-  ];
-  for (let index = 0; index < array.length; index++) {
-    const temp = array[index];
-    if (element.model.jingcaiId == temp) {
-      return true;
-    }
-  }
-  return false;
-}
-
 Parse
   .Cloud
   .define("getpankou", (request, response) => {
     //console.log();
-    var url = "https://vipc.cn/i/match/football/" + match_id + "/odds/pankou/";
+
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
@@ -652,7 +592,7 @@ Parse
     }
 
     //定义某天的时间;;
-    datetemp = "2018-09-04";
+    datetemp = "2019-01-21";
 
     var GameScore = Parse
       .Object
@@ -681,7 +621,7 @@ Parse
                   var match_time = element.model.matchTime;
                   var league = element.model.league;
                   var jingcaiId = element.model.jingcaiId;
-                  getdata2(match_id, match_time, league, jingcaiId, datetemp);
+                  getpankou(match_id, match_time, league, jingcaiId, datetemp);
                 }
 
               }
@@ -698,39 +638,118 @@ Parse
       }
     });
   });
-  function getpankou(match_id, match_time, league, jingcaiId, datetemp) {
-    //console.log(match_id);
-    var url = "https://vipc.cn/i/match/football/" + match_id + "/odds/euro";
-  
-    Parse
-      .Cloud
-      .httpRequest({
-        url: url,
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          'Accept-Encoding': 'gzip,deflate, br'
+function getpankou(match_id, match_time, league, jingcaiId, datetemp) {
+  //console.log(match_id);
+  var url = "https://vipc.cn/i/match/football/" + match_id + "/odds/pankou/";
+
+  Parse
+    .Cloud
+    .httpRequest({
+      url: url,
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'Accept-Encoding': 'gzip,deflate, br'
+      },
+      gzip: true
+    })
+    .then(function (httpResponse) {
+      //console.log(httpResponse.data);
+      var Score = Parse
+        .Object
+        .extend("Pankou");
+      var score = new Score();
+      score.set("match_id", match_id);
+      score.set("match_time", match_time);
+      score.set("today", datetemp);
+      score.set("league", league);
+      score.set("jingcaiId", jingcaiId);
+      var temp = httpResponse.data;
+      score.save(temp);
+
+      var inputtxt = "";
+      var inputtxt1 = "";
+      var tempindex = temp.dxq.length > temp.asia.length
+        ? temp.asia.length
+        :  temp.dxq.length;
+      for (let index = 0; index < tempindex; index++) {
+        const element = temp.dxq[index];
+        const element1 = temp.asia[index];
+
+        if (element["companyId"] == "1") {
+          var a = "";
+          a = element["pankou"] + "_" + element["odds"][0] + "_" + element["odds"][1];
+          inputtxt += a + "_" + element["returnRatio"];
+
+        }
+        if (element["companyId"] == "12") {
+          var b = "";
+          b = element["pankou"] + "_" + element["odds"][0] + "_" + element["odds"][1];
+          inputtxt += "_" + b + "_" + element["returnRatio"];;
+        }
+
+        if (element1["companyId"] == "1") {
+          var a = "";
+          a = element1["pankou"] + "_" + element1["odds"][0] + "_" + element1["odds"][1];
+          inputtxt1 += a + "_" + element1["returnRatio"];;
+        }
+        if (element1["companyId"] == "12") {
+          var b = "";
+          b = element1["pankou"] + "_" + element1["odds"][0] + "_" + element1["odds"][1];
+          inputtxt1 += "_" + b + "_" + element1["returnRatio"];;
+        }
+
+      }
+      //插入到result2
+
+      var query1 = new Parse.Query("Result2");
+      query1.equalTo("match_id", match_id);
+      query1.first({
+        success: function (datas) {
+
+          datas.set("pankou", inputtxt + "_" + inputtxt1);
+
+          datas.save();
+
         },
-        gzip: true
-      })
-      .then(function (httpResponse) {
-        //console.log(httpResponse.data);
-        var Score = Parse
-          .Object
-          .extend("Pankou");
-        var score = new Score();
-        score.set("match_id", match_id);
-        score.set("match_time", match_time);
-        score.set("today", datetemp);
-        score.set("league", league);
-        score.set("jingcaiId", jingcaiId);
-        score.save(httpResponse.data);
-  
-      }, function (httpResponse) {
-        // error
-        response.error('Request failed with response code ' + httpResponse.status);
+        error: function (errors) {
+          console.log(errors);
+        }
+
       });
+
+    }, function (httpResponse) {
+      // error
+      response.error('Request failed with response code ' + httpResponse.status);
+    });
+
+}
+
+function GetjingcaiID(element) {
+
+  var array = [ 
+    "201901207039",
+    "201901207121",
+    "201901207122",
+    "201901207124",
+    "201901207125",
+    "201901207131",
+    "201901207132",
+    "201901207133",
+  ];
   
+
+  // "201901185122",
+  // "201901185125",
+  // "201901185126",
+
+  for (let index = 0; index < array.length; index++) {
+    const temp = array[index];
+    if (element.model.jingcaiId == temp) {
+      return true;
+    }
   }
+  return false;
+}
 /*************
    *
    * ClearALl

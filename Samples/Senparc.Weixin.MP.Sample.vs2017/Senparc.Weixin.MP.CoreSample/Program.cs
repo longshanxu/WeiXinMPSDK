@@ -22,7 +22,7 @@ namespace Senparc.Weixin.MP.CoreSample
                 WindowsKey = "mydotNetKey",
 
                 // the serverURL of your hosted Parse Server
-                Server = "http://www.jizuilv.cn:4666/parse/"
+                Server = "http://localhost:4666/parse/"
             });
             CreateWebHostBuilder(args).Build().Run();
         }
