@@ -1,7 +1,9 @@
 /**
- * @description 删除知识点
- * @author liangwei.xia
+ * 
+ * @description 
+ * @author Json.xu
  * @since 2018-1-11
+ * 
  */
 
 //bet 数据 https://mobile.288365.com/#type=Splash;key=1;ip=0;lng=2 获取今天的比赛
@@ -17,7 +19,7 @@ Parse
       datetemp = year + "-0" + month + "-" + day;
     }
 
-    datetemp = "2019-01-21";;
+    datetemp = "2019-07-13";;
 
     Parse
       .Cloud
@@ -60,8 +62,8 @@ Parse
       datetemp = year + "-0" + month + "-" + day;
     }
 
-    datetemp = "2019-01-21";;
-    //https://vipc.cn/i/live/jczq/date/2019-01-21/next
+    datetemp = "2019-07-13";;
+    //https://vipc.cn/i/live/jczq/date/2019-07-13/next
     Parse
       .Cloud
       .httpRequest({
@@ -104,7 +106,7 @@ Parse
     }
 
     //定义某天的时间;;
-    datetemp = "2019-01-21";
+    datetemp = "2019-07-13";
 
     var GameScore = Parse
       .Object
@@ -203,7 +205,7 @@ Parse
       datetemp = year + "-0" + month + "-" + day;
     }
 
-    datetemp = "2019-01-21";;
+    datetemp = "2019-07-13";;
 
     query.equalTo("date", datetemp);
     query.limit(500);
@@ -293,7 +295,7 @@ Parse
     if (month < 10) {
       datetemp = year + "-0" + month + "-" + day;
     }
-    datetemp = "2019-01-21";;
+    datetemp = "2019-07-13";;
     query.equalTo("date", datetemp);
     query.limit(500);
     var array = [];
@@ -419,12 +421,15 @@ function Getjingcaidata2(element) {
               var h = e.firstOdds[0];
               var d = e.firstOdds[1];
               var a = e.firstOdds[2];
+
+              var p1 = e.firstReturnRatio;
+              var p2 = e.returnRatio;
               //最新 - 胜/平/负
               var h1 = e.odds[0];
               var d1 = e.odds[1];
               var a1 = e.odds[2];
 
-              var rrr = h + "-" + d + "-" + a + "-" + h1 + "-" + d1 + "-" + a1;
+              var rrr = h + "-" + d + "-" + a + "-" + h1 + "-" + d1 + "-" + a1+"-"+p2+"-"+p1;
               temparray['weilian'] = rrr;
 
             }
@@ -448,7 +453,7 @@ function Getjingcaidata2(element) {
               var d1 = e.odds[1];
               var a1 = e.odds[2];
 
-              var rrr = kh + "-" + kd + "-" + ka + "-" + kh1 + "-" + kd1 + "-" + ka1 + "-" + p1 + "-" + p2 + "-" + h1 + "-" + d1 + "-" + a1;
+              var rrr = kh + "-" + kd + "-" + ka + "-" + kh1 + "-" + kd1 + "-" + ka1 + "-" + p2 + "-" + p1 + "-" + h1 + "-" + d1 + "-" + a1;
               temparray['guanfang'] = rrr;
             }
             //bet365 27
@@ -592,7 +597,7 @@ Parse
     }
 
     //定义某天的时间;;
-    datetemp = "2019-01-21";
+    datetemp = "2019-07-13";
 
     var GameScore = Parse
       .Object
@@ -668,37 +673,37 @@ function getpankou(match_id, match_time, league, jingcaiId, datetemp) {
 
       var inputtxt = "";
       var inputtxt1 = "";
-      var tempindex = temp.dxq.length > temp.asia.length
-        ? temp.asia.length
-        :  temp.dxq.length;
-      for (let index = 0; index < tempindex; index++) {
-        const element = temp.dxq[index];
-        const element1 = temp.asia[index];
 
-        if (element["companyId"] == "1") {
+      for (let index = 0; index < temp.dxq.length; index++) {
+        const element = temp.dxq[index];
+        if (element["companyId"] == "8") {
           var a = "";
           a = element["pankou"] + "_" + element["odds"][0] + "_" + element["odds"][1];
-          inputtxt += a + "_" + element["returnRatio"];
+          inputtxt += a + "_" + element["returnRatio"] + "_" + element["firstReturnRatio"];
 
         }
-        if (element["companyId"] == "12") {
+        if (element["companyId"] == "22") {
           var b = "";
           b = element["pankou"] + "_" + element["odds"][0] + "_" + element["odds"][1];
-          inputtxt += "_" + b + "_" + element["returnRatio"];;
-        }
-
-        if (element1["companyId"] == "1") {
-          var a = "";
-          a = element1["pankou"] + "_" + element1["odds"][0] + "_" + element1["odds"][1];
-          inputtxt1 += a + "_" + element1["returnRatio"];;
-        }
-        if (element1["companyId"] == "12") {
-          var b = "";
-          b = element1["pankou"] + "_" + element1["odds"][0] + "_" + element1["odds"][1];
-          inputtxt1 += "_" + b + "_" + element1["returnRatio"];;
+          inputtxt += "_" + b + "_" + element["returnRatio"] + "_" + element["firstReturnRatio"];
         }
 
       }
+      for (let index = 0; index < temp.asia.length; index++) {
+        const element1 = temp.asia[index];
+        if (element1["companyId"] == "8") {
+          var a = "";
+          a = element1["pankou"] + "_" + element1["odds"][0] + "_" + element1["odds"][1];
+          inputtxt1 += a + "_" + element1["returnRatio"] + "_" + element1["firstReturnRatio"];;
+        }
+        if (element1["companyId"] == "22") {
+          var b = "";
+          b = element1["pankou"] + "_" + element1["odds"][0] + "_" + element1["odds"][1];
+          inputtxt1 += "_" + b + "_" + element1["returnRatio"] + "_" + element1["firstReturnRatio"];;
+        }
+
+      }
+   
       //插入到result2
 
       var query1 = new Parse.Query("Result2");
@@ -727,25 +732,18 @@ function getpankou(match_id, match_time, league, jingcaiId, datetemp) {
 function GetjingcaiID(element) {
 
   var array = [ 
-    "201901207039",
-    "201901207121",
-    "201901207122",
-    "201901207124",
-    "201901207125",
-    "201901207131",
-    "201901207132",
-    "201901207133",
-  ];
-  
+    
+    "201907136017",
 
-  // "201901185122",
-  // "201901185125",
-  // "201901185126",
+
+  ];    
+
 
   for (let index = 0; index < array.length; index++) {
     const temp = array[index];
     if (element.model.jingcaiId == temp) {
-      return true;
+      return true;;
+      p
     }
   }
   return false;

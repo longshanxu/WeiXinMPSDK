@@ -13,7 +13,7 @@ Parse
       datetemp = year + "-0" + month + "-" + day;
     }
 
-    datetemp = "2019-01-21";;
+    datetemp = "2019-07-13";;
 
     clear2(datetemp, "Result2");
     clear2(datetemp, "Bet2");
